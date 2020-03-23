@@ -4,7 +4,7 @@ import {Link, useParams, useRouteMatch} from 'react-router-dom';
 
 const Movie = (props) => {
   const [movie, setMovie] = useState();
- console.log( 'this is the props',props);
+ //console.log( 'this is the props',props);
 
  const {id} = useParams();
   useEffect(() => {
@@ -24,11 +24,12 @@ const Movie = (props) => {
 
   },[id]);
   
-  // Uncomment this only when you have moved on to the stretch goals
-  // const saveMovie = () => {
-  //   const addToSavedList = props.addToSavedList;
-  //   addToSavedList(movie)
-  // }
+  //Uncomment this only when you have moved on to the stretch goals
+  const saveMovie = () => {
+    const addToSavedList = props.addToSavedList;
+    addToSavedList(movie)
+    //console.log(addToSavedList)
+  }
 
   if (!movie) {
     return <div>Loading movie information...</div>;
@@ -53,7 +54,7 @@ const Movie = (props) => {
           </div>
         ))}
       </div>
-      <div className="save-button">Save</div>
+      <button onClick ={saveMovie} className="save-button">Save</button>
     </div>
   );
 }
